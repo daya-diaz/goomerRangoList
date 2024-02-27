@@ -5,11 +5,6 @@ import RestaurantCard from "../components/RestaurantCard";
 import {RESTAURANTS} from '../utils/products';
 
 export default function Home(){
-  const currentTime = new Date();
-  const currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes();
-
-  console.log(currentHour, currentMinute)
     return(
         <div className="flex flex-col gap-12">
           <Header/>
@@ -36,8 +31,6 @@ export default function Home(){
                   key={restaurant.id} 
                   name={restaurant.name} 
                   address={`${restaurant.address.city} - ${restaurant.address.street}`}
-                  hour={currentHour}
-                  minute={currentMinute}
                 />
               })
             }

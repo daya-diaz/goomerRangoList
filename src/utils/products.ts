@@ -3,8 +3,10 @@ export const RESTAURANTS = [
     id: '1',
     name: 'Tô de boa',
     description: 'Maior restaurante do Recife, fazemos os melhores lanches da região.',
-    opensAt: 15,
-    closesAt: 23,
+    opensAtHour: 15,
+    opensAtMinute: 0,
+    closesAtHour: 23,
+    closesAtMinute: 30,
     address: {
       city: 'Recife',
       street: 'Casa Amarela'
@@ -43,13 +45,15 @@ export const RESTAURANTS = [
   },
   {
     id: '2',
-    name: 'Tô de boa',
+    name: 'Madrugou',
     description: 'Maior restaurante do Recife, fazemos os melhores lanches da região.',
-    opensAt: 18,
-    closesAt: 23,
+    opensAtHour: 23,
+    opensAtMinute: 0,
+    closesAtHour: 4,
+    closesAtMinute: 30,
     address: {
       city: 'Recife',
-      street: 'Casa Amarela'
+      street: 'Graças'
     },
     imgUrl: '../assets/restaurantImg.png',
     foodsList: [

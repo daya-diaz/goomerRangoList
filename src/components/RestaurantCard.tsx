@@ -6,19 +6,27 @@ interface RestaurantCardProps {
   id: string
   name: string,
   address: string,
-  hour: number,
-  minute: number,
 }
 
-export default function RestaurantCard({id, name, address, hour}: RestaurantCardProps){
+export default function RestaurantCard({id, name, address}: RestaurantCardProps){
   console.log(RESTAURANTS)
-  const restaurantId = id;
-    // const userHour = hour;
-    // const userMinute = minute;
 
-  const restaurant = RESTAURANTS.find(restaurant => restaurant.id === restaurantId);
+  const restaurant = RESTAURANTS.find(restaurant => restaurant.id === id);
+  //pegando hora e minuto atual do usuario
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  const currentMinutes = currentTime.getMinutes();
 
-  const isOpen = restaurant!.opensAt < hour;
+  //pegando hora e minuto de abrir e fechar estabelecimento
+  const opensAtHour = restaurant?.opensAtHour;
+  const opensAtMinute = restaurant?.opensAtMinute;
+  const closesAtHour = restaurant?.closesAtHour;
+  const closesAtMinute = restaurant?.closesAtMinute;
+
+  // Verifica se o restaurante está aberto
+  const isOpen = currentHour > opensAtHour! && currentMinutes >= opensAtMinute! && currentHour <= closesAtHour! && currentMinutes <= closesAtMinute!;
+
+  
   const tagClass = isOpen ? 'bg-secondary' : 'bg-wistful';
 
   console.log(isOpen)
