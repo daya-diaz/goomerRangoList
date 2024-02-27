@@ -1,6 +1,6 @@
 import RestaurantImg from '../assets/restaurantImg.png'
 
-import {RESTAURANTS} from '../utils/products';
+import {RESTAURANTS} from '../utils/data';
 
 interface RestaurantCardProps {
   id: string
@@ -9,7 +9,6 @@ interface RestaurantCardProps {
 }
 
 export default function RestaurantCard({id, name, address}: RestaurantCardProps){
-  console.log(RESTAURANTS)
 
   const restaurant = RESTAURANTS.find(restaurant => restaurant.id === id);
   //pegando hora e minuto atual do usuario
@@ -24,12 +23,13 @@ export default function RestaurantCard({id, name, address}: RestaurantCardProps)
   const closesAtMinute = restaurant?.closesAtMinute;
 
   // Verifica se o restaurante está aberto
-  const isOpen = currentHour > opensAtHour! && currentMinutes >= opensAtMinute! && currentHour <= closesAtHour! && currentMinutes <= closesAtMinute!;
+  const isOpen = currentHour > opensAtHour! 
+                 && currentMinutes >= opensAtMinute! 
+                 && currentHour <= closesAtHour! 
+                 && currentMinutes <= closesAtMinute!;
 
-  
   const tagClass = isOpen ? 'bg-secondary' : 'bg-wistful';
 
-  console.log(isOpen)
     return(
         <div className='relative w-80 lg:w-[22.8rem] shadow-custom'>
           <div className='w-full flex items-center gap-6'>
