@@ -14,6 +14,8 @@ export default {
         white: '#fff',
         wistful: '#b5abd4',
         alabaster: '#fbfbfb',
+        bg: "#E6E6E6",
+        gray500: '#989898'
 
       },
       boxShadow: {
