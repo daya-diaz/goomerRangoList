@@ -5,12 +5,23 @@ import SearchIcon from '../assets/search.svg'
 import { Header } from '../components/Header';
 import arrow from '../assets/arrowDown.png'
 import FoodCard from '../components/FoodCard';
+import { ChangeEvent, useState } from 'react';
 
 export default function RestaurantDetails() {
+  const [search, setSearch] = useState('');
+
+  function handleSearch(event: ChangeEvent<HTMLInputElement>){
+    const query = event.target.value;
+    setSearch(query);
+  }
   const { id } = useParams<{ id: string }>();
   const restaurant = RESTAURANTS.find(restaurant => restaurant.id === id);
-  console.log(restaurant?.foodsList[0].foodImg)
+  const foodRestaurant = restaurant?.foodsList;
+  console.log(foodRestaurant)
 
+  const filteredFoods = search !== ''
+    ? foodRestaurant?.filter(food => food.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    : foodRestaurant;
 
   return (
     <div className='flex flex-col w-full h-full'>
@@ -39,9 +50,11 @@ export default function RestaurantDetails() {
             </div>
             <form className="flex items-center justify-center relative max-w-full lg:max-w-[90%] lg:w-[75%]">
               <input
+                value={search}
                 className="w-full min-w-80 px-10 py-3 shadow-custom rounded-full outline-none max-h-12 focus:border-2 focus:border-primary placeholder:text-colorText placeholder:font-medium"
                 type="text"
                 placeholder="Buscar no cardápio"
+                onChange={handleSearch}
               />
               <img
                 className="absolute right-10 top-4 h-4 w-4 text-gray-400"
@@ -50,6 +63,7 @@ export default function RestaurantDetails() {
               />
             </form>
           </div>
+
           {/*Lógica para se o restaurante não tiver algum determinado tipo de comida, o details não renderizar*/}
           {restaurant?.foodsList.some(food => food.type === 'lunch') && (
             <details className='w-full'>
@@ -59,7 +73,7 @@ export default function RestaurantDetails() {
               </summary>
               <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full md:w-[50%] lg:w-[75%]'>
                 {
-                  restaurant?.foodsList.map(food => {
+                  filteredFoods?.map(food => {
                     if (food.type === 'lunch') {
                       return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                     } else {
@@ -70,7 +84,6 @@ export default function RestaurantDetails() {
               </ul>
             </details>
           )}
-
           {restaurant?.foodsList.some(food => food.type === 'drink') && (
               <details className='w-full'>
                 <summary className='flex items-center justify-between lg:w-[75%] p-3 border-b-2 border-colorText'>
@@ -79,7 +92,7 @@ export default function RestaurantDetails() {
                 </summary>
                 <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full lg:w-[75%]'>
                   {
-                    restaurant?.foodsList.map(food => {
+                    filteredFoods?.map(food => {
                       if (food.type === 'drink') {
                         return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                       } else {
@@ -90,7 +103,6 @@ export default function RestaurantDetails() {
                 </ul>
               </details>
           )}
-
           {restaurant?.foodsList.some(food => food.type === 'dessert') && (
             <details className='w-full'>
               <summary className='flex items-center justify-between lg:w-[75%] p-3 border-b-2 border-colorText'>
@@ -99,7 +111,7 @@ export default function RestaurantDetails() {
               </summary>
               <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full md:w-[50%] lg:w-[75%]'>
                 {
-                  restaurant?.foodsList.map(food => {
+                  filteredFoods?.map(food => {
                     if (food.type === 'dessert') {
                       return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                     } else {

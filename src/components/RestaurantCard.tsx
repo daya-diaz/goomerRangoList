@@ -43,13 +43,13 @@ export default function RestaurantCard({ id }: RestaurantCardProps) {
   let openingHours: OpeningHours[] = [];
 
   switch (currentDayOfWeek) {
-    case 0: // Domingo
+    case 0: 
       openingHours = restaurant.openingHours.sunday;
       break;
-    case 6: // Sábado
+    case 6: 
       openingHours = restaurant.openingHours.saturday;
       break;
-    default: // Segunda a Sexta
+    default: 
       openingHours = restaurant.openingHours.weekdays;
       break;
   }

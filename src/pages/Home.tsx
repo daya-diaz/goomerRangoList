@@ -42,8 +42,6 @@ export default function Home(){
                 return <RestaurantCard 
                   id={restaurant.id}
                   key={restaurant.id} 
-                  name={restaurant.name} 
-                  address={`${restaurant.address.city} - ${restaurant.address.street}`}
                 />
               })
             }
