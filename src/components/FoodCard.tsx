@@ -11,19 +11,18 @@ interface FoodCardProps {
 }
 export default function FoodCard({ name, description, value, id, inPromotion, valueWDiscount }: FoodCardProps){
     return(
-        <li id={id} className='flex roundend-lg w-[386px] gap-4 shadow-customHeader'>
+        <li id={id} className='flex roundend-lg w-full  gap-4 shadow-customHeader lg:w-[386px]'>
           <img src={foodImg} alt="Foto do prato" />
           <div className='flex flex-col gap-2 items-start justify-center'>
-            <h3 className='text-colorText font-medium text-right'>{name}</h3>
-            <p className='text-colorText text-xs font-medium'>{description}</p>
-
-            {
-              inPromotion ? (
-                <span className='text-primary font-medium'>{valueWDiscount} <span className='text-gray500 text-xs line-through'>{value}</span></span>
-              ) : (
-                <span className='text-primary font-medium'>{value}</span>
-              )
-            }
+            <h3 className='text-colorText font-medium text-left'>{name}</h3>
+            <p className='text-colorText text-xs font-medium max-w-[250px]'>{description}</p>
+              {
+                inPromotion ? (
+                  <span className='text-primary font-medium'>{valueWDiscount} <span className='text-gray500 text-xs line-through'>{value}</span></span>
+                ) : (
+                  <span className='text-primary font-medium'>{value}</span>
+                )
+              }
           </div>
         </li>
     )

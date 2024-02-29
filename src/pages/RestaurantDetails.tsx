@@ -57,7 +57,7 @@ export default function RestaurantDetails() {
                 <span className='text-colorText font-semibold'>Almoços</span>
                 <img className='w-4 h-[9px]' src={arrow} />
               </summary>
-              <ul className='flex flex-wrap pt-6 justify-between gap-5 w-[300px] md:w-[50%] lg:w-[75%]'>
+              <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full md:w-[50%] lg:w-[75%]'>
                 {
                   restaurant?.foodsList.map(food => {
                     if (food.type === 'lunch') {
@@ -77,7 +77,7 @@ export default function RestaurantDetails() {
                   <span className='text-colorText font-semibold'>Bebidas</span>
                   <img className='w-4 h-[9px]' src={arrow} />
                 </summary>
-                <ul className='flex flex-wrap pt-6 justify-between gap-5 w-[300px] md:w-[50%] lg:w-[75%]'>
+                <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full lg:w-[75%]'>
                   {
                     restaurant?.foodsList.map(food => {
                       if (food.type === 'drink') {
@@ -97,7 +97,7 @@ export default function RestaurantDetails() {
                 <span className='text-colorText font-semibold'>Sobremesas</span>
                 <img className='w-4 h-[9px]' src={arrow} />
               </summary>
-              <ul className='flex flex-wrap pt-6 justify-between gap-5 w-[300px] md:w-[50%] lg:w-[75%]'>
+              <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full md:w-[50%] lg:w-[75%]'>
                 {
                   restaurant?.foodsList.map(food => {
                     if (food.type === 'dessert') {
