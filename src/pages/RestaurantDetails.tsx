@@ -16,17 +16,17 @@ export default function RestaurantDetails() {
     <div className='flex flex-col w-full h-full'>
       <Header />
       <div className='flex h-screen'>
-        <div className='w-[75%] flex flex-col pl-20 gap-6 parent-div bg-white pb-8 mb-16'>
-          <div>
-            <div className='flex items-center justify-between w-[695px]'>
+        <div className='w-full flex flex-col p-6 gap-6 parent-div bg-white pb-8 mb-16 lg:w-[75%] lg:pl-20'>
+          <div className='w-full'>
+            <div className='flex flex-col items-center justify-between w-full lg:w-[695px] lg:flex-row'>
               <img src={img} alt="Imagem do Restaurante" />
               <div className='flex flex-col gap-2'>
-                <h1 className='font-medium text-colorText text-2xl'>{restaurant?.name}</h1>
-                <p className='text-colorText'>{restaurant?.description}</p>
-                <div className='flex flex-col gap-1'>
+                <h1 className='font-medium text-colorText text-center text-2xl lg:text-left'>{restaurant?.name}</h1>
+                <p className='text-colorText max-w-lg text-center text-lg lg:text-sm lg:text-left'>{restaurant?.description}</p>
+                <div className='flex flex-col gap-1 mt-4 lg:mt-0'>
                   {/* Formatando os horários de abertura e fechamento para cada dia */}
                   {Object.entries(restaurant?.openingHours ?? {}).map(([dayType, hours]) => (
-                    <p key={dayType} className='text-xs text-colorText'>
+                    <p key={dayType} className='text-sm text-center text-colorText lg:text-start lg:text-xs'>
                       {hours.map(({ day, opensAt, closesAt }) => (
                         <span key={day}>
                           {day}: <b>{opensAt} às {closesAt}</b>
@@ -37,7 +37,7 @@ export default function RestaurantDetails() {
                 </div>
               </div>
             </div>
-            <form className="relative w-[300px] md:w-[50%] lg:w-[75%]">
+            <form className="flex items-center justify-center relative max-w-full lg:max-w-[90%] lg:w-[75%]">
               <input
                 className="w-full min-w-80 px-10 py-3 shadow-custom rounded-full outline-none max-h-12 focus:border-2 focus:border-primary placeholder:text-colorText placeholder:font-medium"
                 type="text"
@@ -52,8 +52,8 @@ export default function RestaurantDetails() {
           </div>
           {/*Lógica para se o restaurante não tiver algum determinado tipo de comida, o details não renderizar*/}
           {restaurant?.foodsList.some(food => food.type === 'lunch') && (
-            <details>
-              <summary className='flex items-center justify-between w-[300px] md:w-[50%] lg:w-[75%] p-3 border-b-2 border-colorText'>
+            <details className='w-full'>
+              <summary className='flex items-center justify-between w-full lg:w-[75%] p-3 border-b-2 border-colorText'>
                 <span className='text-colorText font-semibold'>Almoços</span>
                 <img className='w-4 h-[9px]' src={arrow} />
               </summary>
@@ -72,8 +72,8 @@ export default function RestaurantDetails() {
           )}
 
           {restaurant?.foodsList.some(food => food.type === 'drink') && (
-              <details>
-                <summary className='flex items-center justify-between w-[300px] md:w-[50%] lg:w-[75%] p-3 border-b-2 border-colorText'>
+              <details className='w-full'>
+                <summary className='flex items-center justify-between lg:w-[75%] p-3 border-b-2 border-colorText'>
                   <span className='text-colorText font-semibold'>Bebidas</span>
                   <img className='w-4 h-[9px]' src={arrow} />
                 </summary>
@@ -92,8 +92,8 @@ export default function RestaurantDetails() {
           )}
 
           {restaurant?.foodsList.some(food => food.type === 'dessert') && (
-            <details>
-              <summary className='flex items-center justify-between w-[300px] md:w-[50%] lg:w-[75%] p-3 border-b-2 border-colorText'>
+            <details className='w-full'>
+              <summary className='flex items-center justify-between lg:w-[75%] p-3 border-b-2 border-colorText'>
                 <span className='text-colorText font-semibold'>Sobremesas</span>
                 <img className='w-4 h-[9px]' src={arrow} />
               </summary>
@@ -111,7 +111,7 @@ export default function RestaurantDetails() {
             </details>
           )}
         </div>
-        <div className='w-[25%] bg-bg h-full'></div>
+        <div className='w-[25%] hidden bg-bg h-full lg:block'></div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import RestaurantDetails from "./pages/RestaurantDetails"
+import FoodOverlay from "./components/FoodOverlay"
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details/:id" element={<RestaurantDetails />} />
+        <Route path="/test" element={<FoodOverlay/>} />
       </Routes>
     </BrowserRouter>
   )
