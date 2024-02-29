@@ -12,3 +12,13 @@ body,
 html {
   font-family: "Montserrat", sans-serif;
 }
+
+.parent-div {
+  /* Outros estilos da div pai... */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical apenas quando necessário */
+}
+
+/* Oculta as barras de rolagem em navegadores baseados em WebKit (como Chrome) */
+.parent-div::-webkit-scrollbar {
+  display: none;
+}

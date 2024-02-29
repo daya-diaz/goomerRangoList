@@ -16,7 +16,7 @@ export default function RestaurantDetails() {
     <div className='flex flex-col w-full h-full'>
       <Header />
       <div className='flex h-screen'>
-        <div className='w-[75%] flex flex-col pl-20 gap-6 bg-white'>
+        <div className='w-[75%] flex flex-col pl-20 gap-6 parent-div bg-white pb-8 mb-16'>
           <div>
             <div className='flex items-center justify-between w-[695px]'>
               <img src={img} alt="Imagem do Restaurante" />
@@ -61,7 +61,7 @@ export default function RestaurantDetails() {
                 {
                   restaurant?.foodsList.map(food => {
                     if (food.type === 'lunch') {
-                      return <FoodCard key={food.id} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
+                      return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                     } else {
                       return
                     }
@@ -81,7 +81,7 @@ export default function RestaurantDetails() {
                   {
                     restaurant?.foodsList.map(food => {
                       if (food.type === 'drink') {
-                        return <FoodCard key={food.id} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
+                        return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                       } else {
                         return
                       }
@@ -101,7 +101,7 @@ export default function RestaurantDetails() {
                 {
                   restaurant?.foodsList.map(food => {
                     if (food.type === 'dessert') {
-                      return <FoodCard key={food.id} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
+                      return <FoodCard key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
                     } else {
                       return null;
                     }
@@ -110,9 +110,8 @@ export default function RestaurantDetails() {
               </ul>
             </details>
           )}
-
         </div>
-        <div className='w-[25%] bg-bg'></div>
+        <div className='w-[25%] bg-bg h-full'></div>
       </div>
     </div>
   );
