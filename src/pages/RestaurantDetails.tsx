@@ -8,7 +8,15 @@ import FoodCard from '../components/FoodCard';
 import { ChangeEvent, useState } from 'react';
 import FoodOverlay from '../components/FoodOverlay';
 
+interface FoodDetails {
+  name: string;
+  description: string;
+  value: string;
+}
+
 export default function RestaurantDetails() {
+  const [foodDetails, setFoodDetails] = useState<FoodDetails | null>(null);
+
   const [showOverlay, setShowOverlay] = useState<boolean>(false); // Estado para controlar a exibição do overlay
   const [selectedFoodId, setSelectedFoodId] = useState<string>('');
   const [search, setSearch] = useState('');
@@ -25,10 +33,12 @@ export default function RestaurantDetails() {
     ? foodRestaurant?.filter(food => food.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     : foodRestaurant;
 
-    function handleOpenOverlay(id: string) {
+    function handleOpenOverlay(id: string, name: string, description: string, value: string) {
       setSelectedFoodId(id);
+      setFoodDetails({ name, description, value }); // Adicione essas informações ao estado
       setShowOverlay(true);
     }
+    
     const handleCloseOverlay = () => {
       setShowOverlay(false);
     };
@@ -81,15 +91,28 @@ export default function RestaurantDetails() {
                 <img className='w-4 h-[9px]' src={arrow} />
               </summary>
               <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full md:w-[50%] lg:w-[75%]'>
-                {
-                  filteredFoods?.map(food => {
-                    if (food.type === 'lunch') {
-                      return <FoodCard onClick={() => handleOpenOverlay(food.id)} key={food.id}  inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
-                    } else {
-                      return
-                    }
-                  })
-                }
+              {
+                filteredFoods?.map(food => {
+                  if (food.type === 'lunch') {
+                    return (
+                      <FoodCard
+                        onClick={() => handleOpenOverlay(food.id, food.name, food.description, food.value)}
+                        key={food.id}
+                        inPromotion={food.inPromotion}
+                        valueWDiscount={food.valueWDiscount}
+                        id={food.id}
+                        name={food.name}
+                        description={food.description}
+                        value={food.value}
+                        pic={food.foodImg}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })
+              }
+
               </ul>
             </details>
           )}
@@ -132,7 +155,7 @@ export default function RestaurantDetails() {
             </details>
           )}
 
-          {showOverlay && <FoodOverlay foodId={selectedFoodId} onClick={handleCloseOverlay} />}
+          {showOverlay && <FoodOverlay foodId={selectedFoodId} foodDetails={foodDetails}  onClick={handleCloseOverlay} />}
         </div>
         <div className='w-[25%] hidden bg-bg h-full lg:block'></div>
       </div>

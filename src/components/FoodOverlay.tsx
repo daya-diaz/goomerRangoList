@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import imgFood from '../assets/foodImg.png'
 import closeIcon from '../assets/closeIcon.svg'
-interface FoodOverlayProps {
-  foodId: string,
-  onClick: () => void,
 
+interface FoodDetails {
+  name: string;
+  description: string;
+  value: string;
 }
-export default function FoodOverlay({onClick}: FoodOverlayProps){
+
+interface FoodOverlayProps {
+  foodId: string;
+  foodDetails: FoodDetails | null;
+  onClick: () => void;
+}
+
+export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
   const [quantity, setQuantity] = useState(1);
   function handleCloseOverlay( ) {
     onClick();
@@ -21,7 +29,7 @@ export default function FoodOverlay({onClick}: FoodOverlayProps){
   function increaseQuantity() {
     setQuantity(quantity + 1);
   }
-
+  console.log(foodDetails)
     return(
         <div className='fixed top-0 left-0 bg-colorText bg-opacity-30 w-screen h-screen flex items-center m-auto justify-center z-50'>
           <button onClick={handleCloseOverlay} className='fixed bg-white top-[13%] right-[31%] p-3 rounded-full shadow-custom'>
@@ -32,7 +40,7 @@ export default function FoodOverlay({onClick}: FoodOverlayProps){
               <img className='w-full h-auto max-h-[200px] rounded-md' src={imgFood} alt='Imagem do prato'/>
               <div className='flex justify-between items-end'>
                 <div className='w-full flex flex-col flex-1 pt-10 gap-1'>
-                  <h1 className='font-medium text-colorText text-2xl'>{}</h1>
+                  <h1 className='font-medium text-colorText text-2xl'>{foodDetails?.name}</h1>
                   <p className='font-medium text-colorText max-w-[380px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <div>
