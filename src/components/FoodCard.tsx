@@ -7,11 +7,16 @@ interface FoodCardProps {
   pic: string,
   id: string,
   inPromotion: boolean,
-  valueWDiscount: string
+  valueWDiscount: string,
+  onClick: () => void,
+
 }
-export default function FoodCard({ name, description, value, id, inPromotion, valueWDiscount }: FoodCardProps){
+export default function FoodCard({ name, description, value, id, inPromotion, valueWDiscount, onClick }: FoodCardProps){ 
+  const handleClick = () => {
+    onClick();
+  }
     return(
-        <li id={id} className='flex roundend-lg w-full  gap-4 shadow-customHeader lg:w-[386px]'>
+        <li id={id} className='flex roundend-lg w-full cursor-pointer gap-4 shadow-customHeader lg:w-[386px]' onClick={handleClick}>
           <img src={foodImg} alt="Foto do prato" />
           <div className='flex flex-col gap-2 items-start justify-center'>
             <h3 className='text-colorText font-medium text-left'>{name}</h3>
