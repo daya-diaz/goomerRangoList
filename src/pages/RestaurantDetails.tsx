@@ -126,7 +126,19 @@ export default function RestaurantDetails() {
                   {
                     filteredFoods?.map(food => {
                       if (food.type === 'drink') {
-                        return <FoodCard onClick={() => handleOpenOverlay(food.id)} key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
+                        return (
+                          <FoodCard
+                            onClick={() => handleOpenOverlay(food.id, food.name, food.description, food.value)}
+                            key={food.id}
+                            inPromotion={food.inPromotion}
+                            valueWDiscount={food.valueWDiscount}
+                            id={food.id}
+                            name={food.name}
+                            description={food.description}
+                            value={food.value}
+                            pic={food.foodImg}
+                          />
+                        )
                       } else {
                         return
                       }
@@ -145,7 +157,19 @@ export default function RestaurantDetails() {
                 {
                   filteredFoods?.map(food => {
                     if (food.type === 'dessert') {
-                      return <FoodCard onClick={() => handleOpenOverlay(food.id)} key={food.id} inPromotion={food.inPromotion} valueWDiscount={food.valueWDiscount} id={food.id} name={food.name} description={food.description} value={food.value} pic={food.foodImg} />
+                      return (
+                        <FoodCard
+                        onClick={() => handleOpenOverlay(food.id, food.name, food.description, food.value)}
+                        key={food.id}
+                        inPromotion={food.inPromotion}
+                        valueWDiscount={food.valueWDiscount}
+                        id={food.id}
+                        name={food.name}
+                        description={food.description}
+                        value={food.value}
+                        pic={food.foodImg}
+                      />
+                      )
                     } else {
                       return null;
                     }

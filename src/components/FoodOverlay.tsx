@@ -29,6 +29,7 @@ export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
   function increaseQuantity() {
     setQuantity(quantity + 1);
   }
+
   console.log(foodDetails)
     return(
         <div className='fixed top-0 left-0 bg-colorText bg-opacity-30 w-screen h-screen flex items-center m-auto justify-center z-50'>
@@ -41,10 +42,10 @@ export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
               <div className='flex justify-between items-end'>
                 <div className='w-full flex flex-col flex-1 pt-10 gap-1'>
                   <h1 className='font-medium text-colorText text-2xl'>{foodDetails?.name}</h1>
-                  <p className='font-medium text-colorText max-w-[380px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p className='font-medium text-colorText max-w-[380px]'>{foodDetails?.description}</p>
                 </div>
                 <div>
-                  <span className='text-3xl text-primary font-medium'>R$ 19.90</span>
+                  <span className='text-3xl text-primary font-medium'>{`R$ ${foodDetails?.value}`}</span>
                 </div>
               </div>
             </div>
@@ -60,9 +61,9 @@ export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
                   +
                 </button>
               </div>
-              <button onClick={increaseQuantity} className='flex justify-between p-3 bg-primary text-white font-medium items-center w-[265px] rounded-md'>
+              <button onClick={handleCloseOverlay} className={`flex justify-between p-3 bg-primary text-white font-medium items-center w-[265px] rounded-md ${quantity ? '' : 'bg-gray500 cursor-auto'}`}>
                 Adicionar
-                <span>19.90</span>
+                <span>{((Number(foodDetails?.value) * quantity).toFixed(2)).replace('.', ',')}</span>
               </button>
             </div>
           </div>
