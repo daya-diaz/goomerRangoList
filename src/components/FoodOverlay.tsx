@@ -63,7 +63,7 @@ export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
               </div>
               <button onClick={handleCloseOverlay} className={`flex justify-between p-3 bg-primary text-white font-medium items-center w-[265px] rounded-md ${quantity ? '' : 'bg-gray500 cursor-auto'}`}>
                 Adicionar
-                <span>{((Number(foodDetails?.value) * quantity).toFixed(2)).replace('.', ',')}</span>
+                <span>{((Number(foodDetails?.value) * quantity).toFixed(2))}</span>
               </button>
             </div>
           </div>
