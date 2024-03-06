@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import RestaurantImg from '../assets/restaurantImg.png';
-import { RESTAURANTS } from '../utils/data';
+import RestaurantImg from '../../assets/restaurantImg.png';
+import { RESTAURANTS } from '../../utils/data';
 import { getDay } from 'date-fns';
 
 interface OpeningHours {

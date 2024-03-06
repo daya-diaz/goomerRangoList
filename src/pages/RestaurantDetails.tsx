@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import { RESTAURANTS } from '../utils/data';
 import img from '../assets/restaurantImg.png';
 import SearchIcon from '../assets/search.svg'
-import { Header } from '../components/Header';
+import { Header } from '../components/Header/Header';
 import arrow from '../assets/arrowDown.png'
-import FoodCard from '../components/FoodCard';
+import FoodCard from '../components/FoodCard/FoodCard';
 import { ChangeEvent, useState } from 'react';
-import FoodOverlay from '../components/FoodOverlay';
+import FoodOverlay from '../components/FoodOverlay/FoodOverlay';
 
 interface FoodDetails {
   name: string;

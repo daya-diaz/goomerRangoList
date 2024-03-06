@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import RestaurantDetails from "./pages/RestaurantDetails"
-import FoodOverlay from "./components/FoodOverlay"
+import FoodOverlay from "./components/FoodOverlay/FoodOverlay"
 
 function App() {
   return (

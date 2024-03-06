@@ -1,6 +1,6 @@
-import { Header } from "../components/Header";
+import { Header } from "../components/Header/Header";
 import SearchIcon from '../assets/search.svg'
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard from "../components/RestaurantCard/RestaurantCard";
 
 import { RESTAURANTS } from '../utils/data';
 import { ChangeEvent, useState } from "react";

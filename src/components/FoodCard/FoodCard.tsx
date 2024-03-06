@@ -1,4 +1,4 @@
-import foodImg from '../assets/foodImg.png'
+import foodImg from '../../assets/foodImg.png'
 
 interface FoodCardProps {
   name: string,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import imgFood from '../assets/foodImg.png'
-import closeIcon from '../assets/closeIcon.svg'
+import imgFood from '../../assets/foodImg.png'
+import closeIcon from '../../assets/closeIcon.svg'
 
 interface FoodDetails {
   name: string;
