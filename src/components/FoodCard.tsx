@@ -16,7 +16,7 @@ export default function FoodCard({ name, description, value, id, inPromotion, va
     onClick();
   }
     return(
-        <li id={id} className='flex roundend-lg w-full cursor-pointer gap-4 shadow-customHeader lg:w-[386px]' onClick={handleClick}>
+        <li id={id} className='flex roundend-lg w-full cursor-pointer gap-4 shadow-customHeader lg:w-[383px]' onClick={handleClick}>
           <img src={foodImg} alt="Foto do prato" />
           <div className='flex flex-col gap-2 items-start justify-center'>
             <h3 className='text-colorText font-medium text-left'>{name}</h3>
