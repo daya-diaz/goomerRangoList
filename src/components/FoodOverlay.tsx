@@ -33,10 +33,10 @@ export default function FoodOverlay({foodDetails, onClick}: FoodOverlayProps){
   console.log(foodDetails)
     return(
         <div className='fixed top-0 left-0 bg-colorText bg-opacity-30 w-screen h-screen flex items-center m-auto justify-center z-50'>
-          <button onClick={handleCloseOverlay} className='fixed bg-white top-[13%] right-[31%] p-3 rounded-full shadow-custom'>
+          <button onClick={handleCloseOverlay} className='hidden bg-white lg:block fixed top-[10%] right-[2%] lg:top-[13%] lg:right-[31%] p-3 rounded-full shadow-custom'>
             <img className='w-5 h-5' src={closeIcon} alt="Fechar card de prato" />
           </button>
-          <div className='w-[553px] px-4 bg-white rounded-lg shadow-customHeader'>
+          <div className='w-[90%] px-4 bg-white rounded-lg shadow-customHeader lg:w-[553px]'>
             <div className='flex flex-col w-full pt-6 border-b-[1px] border-bg pb-6'>
               <img className='w-full h-auto max-h-[200px] rounded-md' src={imgFood} alt='Imagem do prato'/>
               <div className='flex justify-between items-end'>
