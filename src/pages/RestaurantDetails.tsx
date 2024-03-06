@@ -43,7 +43,7 @@ export default function RestaurantDetails() {
       setShowOverlay(false);
     };
   return (
-    <div className='flex flex-col w-full h-full'>
+    <div className='flex relative flex-col w-full h-full'>
       <Header />
       <div className='flex h-screen'>
         <div className='w-full flex flex-col p-6 gap-6 parent-div bg-white pb-8 mb-16 lg:w-[75%] lg:pl-20'>
@@ -51,7 +51,7 @@ export default function RestaurantDetails() {
             <div className='flex flex-col items-center justify-between w-full lg:w-[695px] lg:flex-row'>
               <img src={img} alt="Imagem do Restaurante" />
               <div className='flex flex-col gap-2'>
-                <h1 className='font-medium text-colorText text-center text-2xl lg:text-left'>{restaurant?.name}</h1>
+                  <h1 className='font-medium text-colorText text-center text-2xl lg:text-left'>{restaurant?.name}</h1>
                 <p className='text-colorText max-w-lg text-center text-lg lg:text-sm lg:text-left'>{restaurant?.description}</p>
                 <div className='flex flex-col gap-1 mt-4 lg:mt-0'>
                   {/* Formatando os horários de abertura e fechamento para cada dia */}
