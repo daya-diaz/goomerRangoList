@@ -15,4 +15,19 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+  "requireConfigFile": false, //Add this line
+  "babelOptions": {      
+    // "configFile": "babel.config.js" //When linting it only works with absolute path
+    // Here starts the configuration
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "react-app"
+      ],
+      "plugins": ["@babel/plugin-syntax-class-properties","@babel/plugin-proposal-class-properties"]
+    // Here ends the configuration
+    }
+  },
 }
