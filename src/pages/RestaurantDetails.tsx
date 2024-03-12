@@ -7,17 +7,7 @@ import { ChangeEvent, useState } from 'react';
 import FoodDetails from '../components/FoodDetails/FoodDetails';
 import { Food } from '../types/types';
 
-interface FoodDetailsProps {
-  name: string;
-  description: string;
-  value: string;
-}
-
 export default function RestaurantDetails() {
-  const [foodDetails, setFoodDetails] = useState<FoodDetailsProps | null>(null);
-
-  const [showOverlay, setShowOverlay] = useState<boolean>(false); // Estado para controlar a exibição do overlay
-  const [selectedFoodId, setSelectedFoodId] = useState<string>('');
   const [search, setSearch] = useState('');
 
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
@@ -32,15 +22,6 @@ export default function RestaurantDetails() {
     ? foodRestaurant?.filter(food => food.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     : foodRestaurant;
 
-  function handleOpenOverlay(id: string, name: string, description: string, value: string) {
-    setSelectedFoodId(id);
-    setFoodDetails({ name, description, value }); // Adicione essas informações ao estado
-    setShowOverlay(true);
-  }
-
-  const handleCloseOverlay = () => {
-    setShowOverlay(false);
-  };
   return (
     <div className='flex relative flex-col w-full h-full'>
       <Header />

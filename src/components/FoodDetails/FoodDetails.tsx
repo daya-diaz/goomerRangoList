@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import FoodCard from '../FoodCard/FoodCard'; // Importa o componente FoodCard
+import { useState } from 'react';
+import FoodCard from '../FoodCard/FoodCard'; 
 import { Food } from '../../types/types';
 import arrowDown from '../../assets/arrowDown.png';
 import FoodOverlay from '../FoodOverlay/FoodOverlay';
@@ -22,8 +22,8 @@ function FoodDetails({ title, foods }: FoodDetailsProps) {
   const [selectedFoodId, setSelectedFoodId] = useState<string>('');
 
   function handleOpenOverlay(id: string, name: string, description: string, value: string) {
-    setSelectedFoodId(id);
-    setFoodDetails({ name, description, value }); // Adicione essas informações ao estado
+    setSelectedFoodId(id)
+    setFoodDetails({ name, description, value }); // Adiciona essas informações ao estado
     setShowOverlay(true);
   }
 
