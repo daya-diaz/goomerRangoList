@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FoodCard from '../FoodCard/FoodCard'; 
 import { Food } from '../../types/types';
 import arrowDown from '../../assets/arrowDown.png';
+import arrowRight from '../../assets/arrowRight.png'
 import FoodOverlay from '../FoodOverlay/FoodOverlay';
 
 interface FoodDetailsProps {
@@ -40,10 +41,12 @@ function FoodDetails({ title, foods }: FoodDetailsProps) {
       >
         <summary className='flex items-center justify-between lg:w-[75%] p-3 border-b-2 border-colorText'>
           <span className='text-colorText font-semibold'>{title}</span>
-          <img className='w-4 h-[9px]' src={arrowDown} />
+          <img src={`${isOpen ? arrowDown : arrowRight}`} />
         </summary>
         <ul className='flex flex-wrap pt-6 justify-between gap-5 w-full lg:w-[75%]'>
-          {foods.map(food => (
+          { foods.length === 0 
+            ? <p className='cursor-default'>Infelizmente não possuímos esse tipo de comida ainda.</p> 
+            : foods.map(food => (
             <FoodCard
               key={food.id}
               onClick={() => handleOpenOverlay(food.id, food.name, food.description, food.value)}

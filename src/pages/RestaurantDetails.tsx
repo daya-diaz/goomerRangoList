@@ -21,7 +21,7 @@ export default function RestaurantDetails() {
   const filteredFoods = search !== ''
     ? foodRestaurant?.filter(food => food.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     : foodRestaurant;
-
+  console.log(foodRestaurant)
   return (
     <div className='flex relative flex-col w-full h-full'>
       <Header />
